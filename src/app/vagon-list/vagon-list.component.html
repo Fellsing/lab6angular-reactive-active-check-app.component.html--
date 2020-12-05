@@ -1,0 +1,50 @@
+<div>
+    <div>
+      <label>Название вагона</label>
+      <input id="nam" name="title"required maxlength="50" [(ngModel)]="vagon.name" />
+    </div>
+    <div>
+      <label>номер вагона</label>
+      <input type="number"  id="nomer"  name="id" [(ngModel)]="vagon.type" />
+    </div>
+    <div>
+      <label>Тип вагона</label>
+      <select name="type" [(ngModel)]="vagon.status">
+        <option  *ngFor="let status of types" [value]="status">
+          {{status}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button (click)="addVagon()">Добавить</button>
+    </div>
+  </div>
+
+
+<table>
+    <tr>
+      <td>name</td>
+      <td>id</td>
+      <td>status</td>
+      <td>type</td>
+      <td></td>
+      <td></td>
+    </tr>
+  
+    <tr *ngFor="let vagon of vagons">
+      <td>{{vagon.name}}</td>
+      <td>{{vagon.id}}</td>
+      <td>{{vagon.status}}</td>
+      <td>{{vagon.type}}</td>
+      <td>
+        <button (click)="deleteVagon(vagon)" >Удалить</button>
+      </td>
+      <td>
+        <button (click)="showMassiv()" >Консоль</button>
+      </td>
+      <td>
+        <button (click)="editVagon(vagon)">Изменить</button>
+      </td>
+    </tr>
+  
+  </table>

@@ -1,0 +1,54 @@
+<form [formGroup]="profileVagon">
+    <div >
+      <div>
+        <label>Название вагона</label>
+        <input type ="text" formControlName="name" required/>
+      </div>
+      <div>
+        <label>Номер вагона</label>
+        <input type="text" id="id" formControlName="id" required/>
+      </div>
+    </div>
+      <div>
+        <label>Тип вагона</label>
+        <select name="status" formControlName="status" required>
+          <option  *ngFor="let status of types" [value]="status">
+            {{status}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button type="submit" [disabled]="!profileVagon.valid" (click)="addWagons()">Submit</button>
+      </div>
+  </form>
+  <p>
+    Form Value: {{ profileVagon.value | json }}
+  </p>
+  
+  
+  <table>
+    <tr>
+      <td>name</td>
+      <td>id</td>
+      <td>status</td>
+      <td>type</td>
+      <td></td>
+      <td></td>
+    </tr>
+  
+    <tr *ngFor="let vagon of vagons">
+      <td>{{vagon.name}}</td>
+      <td>{{vagon.id}}</td>
+      <td>{{vagon.status}}</td>
+      <td>{{vagon.type}}</td>
+      <td>
+        <button (click)="deleteWagon(vagon)">Удалить</button>
+      </td>
+      <td>
+        <button>Изменить</button>
+      </td>
+    </tr>
+  
+  </table>
+  
+  
